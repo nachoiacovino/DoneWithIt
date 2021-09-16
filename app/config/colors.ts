@@ -1,6 +1,8 @@
-interface Colors {
-  [key: string]: string;
-}
+export type ColorKeys = "primary" | "secondary" | "black" | "white" | "medium";
+
+type Colors = {
+  [key in ColorKeys]: string;
+};
 
 const colors: Colors = {
   primary: "#fc5c65",

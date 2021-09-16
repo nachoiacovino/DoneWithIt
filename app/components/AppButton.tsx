@@ -1,12 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
-import colors from '../config/colors';
+import colors, { ColorKeys } from '../config/colors';
 
 interface AppButtonProps {
   title: string;
   onPress: () => null;
-  color?: string;
+  color?: ColorKeys;
 }
 
 const AppButton = ({ title, onPress, color = 'primary' }: AppButtonProps) => {
