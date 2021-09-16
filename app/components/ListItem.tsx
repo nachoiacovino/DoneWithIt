@@ -6,17 +6,17 @@ import AppText from './AppText';
 
 interface ListItemProps {
   title: string;
-  subTitle: string;
+  description: string;
   image: ImageSourcePropType;
 }
 
-function ListItem({ title, subTitle, image }: ListItemProps) {
+function ListItem({ title, description, image }: ListItemProps) {
   return (
     <View style={styles.container}>
       <Image style={styles.image} source={image} />
       <View>
         <AppText style={styles.title}>{title}</AppText>
-        <AppText style={styles.subTitle}>{subTitle}</AppText>
+        <AppText style={styles.description}>{description}</AppText>
       </View>
     </View>
   );
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     borderRadius: 35,
     marginRight: 10,
   },
-  subTitle: {
+  description: {
     color: colors.medium,
   },
   title: {
