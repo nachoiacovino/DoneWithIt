@@ -16,7 +16,8 @@ function ListingDetailsScreen() {
           <ListItem
             image={require('../assets/mosh.jpg')}
             title='Mosh Hamedani'
-            subTitle='5 Listings'
+            description='5 Listings'
+            onPress={() => null}
           />
         </View>
       </View>
