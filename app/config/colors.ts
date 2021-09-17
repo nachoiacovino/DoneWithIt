@@ -5,6 +5,7 @@ interface Colors {
   white: string;
   medium: string;
   light: string;
+  danger: string;
 }
 
 export type ColorKeys = keyof Colors;
@@ -15,7 +16,8 @@ const colors: Colors = {
   black: "#000",
   white: "#fff",
   medium: "#6e6969",
-  light: '#f8f4f4'
+  light: '#f8f4f4',
+  danger: 'red'
 };
 
 export default colors;
