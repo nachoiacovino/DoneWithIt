@@ -5,6 +5,7 @@ interface Colors {
   white: string;
   medium: string;
   light: string;
+  dark: string;
   danger: string;
 }
 
@@ -17,7 +18,8 @@ const colors: Colors = {
   white: "#fff",
   medium: "#6e6969",
   light: '#f8f4f4',
-  danger: 'red'
+  dark: '#0c0c0c',
+  danger: '#ff5252'
 };
 
 export default colors;
