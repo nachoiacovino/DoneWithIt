@@ -1,8 +1,9 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import React from 'react';
-import { Platform, StyleSheet, TextInput, TextInputProps, View } from 'react-native';
+import { StyleSheet, TextInput, TextInputProps, View } from 'react-native';
 
 import colors from '../config/colors';
+import defaultStyles from '../config/styles';
 
 interface AppTextInputProps extends TextInputProps {
   iconName?: React.ComponentProps<typeof MaterialCommunityIcons>['name'];
@@ -22,7 +23,7 @@ const AppTextInput = ({
           style={styles.icon}
         />
       )}
-      <TextInput style={styles.textInput} {...rest} />
+      <TextInput style={[defaultStyles.text, styles.textInput]} {...rest} />
     </View>
   );
 };
@@ -39,9 +40,6 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   textInput: {
-    color: colors.dark,
-    fontSize: 18,
-    fontFamily: Platform.OS === 'android' ? 'Roboto' : 'Avenir',
     width: '100%',
   },
   icon: {

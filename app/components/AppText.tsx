@@ -1,20 +1,19 @@
 import React from 'react';
-import { Platform, StyleSheet, Text, TextStyle } from 'react-native';
+import { Text, TextProps, TextStyle } from 'react-native';
 
-interface AppTextProps {
+import defaultStyles from '../config/styles';
+
+interface AppTextProps extends TextProps {
   children: React.ReactNode;
   style: TextStyle;
 }
 
-const AppText = ({ children, style }: AppTextProps) => {
-  return <Text style={[styles.text, style]}>{children}</Text>;
+const AppText = ({ children, style, ...rest }: AppTextProps) => {
+  return (
+    <Text style={[defaultStyles.text, style]} {...rest}>
+      {children}
+    </Text>
+  );
 };
-
-const styles = StyleSheet.create({
-  text: {
-    fontSize: 18,
-    fontFamily: Platform.OS === 'android' ? 'Roboto' : 'Avenir',
-  },
-});
 
 export default AppText;
