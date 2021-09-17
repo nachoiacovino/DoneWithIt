@@ -1,6 +1,6 @@
 import Constants from 'expo-constants';
 import React from 'react';
-import { SafeAreaView, StyleSheet, ViewStyle } from 'react-native';
+import { SafeAreaView, StyleSheet, View, ViewStyle } from 'react-native';
 
 interface ScreenProps {
   children: React.ReactNode;
@@ -8,7 +8,11 @@ interface ScreenProps {
 }
 
 const Screen = ({ children, style }: ScreenProps) => {
-  return <SafeAreaView style={[styles.screen, style]}>{children}</SafeAreaView>;
+  return (
+    <SafeAreaView style={styles.screen}>
+      <View style={style}>{children}</View>
+    </SafeAreaView>
+  );
 };
 
 export default Screen;
