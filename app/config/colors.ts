@@ -1,8 +1,13 @@
-export type ColorKeys = "primary" | "secondary" | "black" | "white" | "medium";
+interface Colors {
+  primary: string;
+  secondary: string;
+  black: string;
+  white: string;
+  medium: string;
+  light: string;
+}
 
-type Colors = {
-  [key in ColorKeys]: string;
-};
+export type ColorKeys = keyof Colors;
 
 const colors: Colors = {
   primary: "#fc5c65",
@@ -10,6 +15,7 @@ const colors: Colors = {
   black: "#000",
   white: "#fff",
   medium: "#6e6969",
+  light: '#f8f4f4'
 };
 
 export default colors;
