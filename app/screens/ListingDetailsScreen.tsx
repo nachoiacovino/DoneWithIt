@@ -17,7 +17,7 @@ function ListingDetailsScreen() {
             image={require('../assets/mosh.jpg')}
             title='Mosh Hamedani'
             description='5 Listings'
-            onPress={() => null}
+            onPress={() => {}}
           />
         </View>
       </View>

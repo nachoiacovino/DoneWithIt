@@ -40,7 +40,7 @@ const MessagesScreen = () => {
             title={title}
             description={description}
             image={image}
-            onPress={() => null}
+            onPress={() => {}}
             renderRightActions={() => (
               <ListItemDelete onPress={() => deleteMessage(id)} />
             )}

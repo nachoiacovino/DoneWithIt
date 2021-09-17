@@ -7,9 +7,10 @@ import AppText from './AppText';
 
 interface ListItemProps {
   title: string;
-  description: string;
-  image: ImageSourcePropType;
-  onPress: () => null;
+  description?: string;
+  image?: ImageSourcePropType;
+  Icon?: JSX.Element;
+  onPress: () => void;
   renderRightActions?: () => JSX.Element;
 }
 
@@ -17,6 +18,7 @@ const ListItem = ({
   title,
   description,
   image,
+  Icon,
   onPress,
   renderRightActions,
 }: ListItemProps) => {
@@ -24,10 +26,13 @@ const ListItem = ({
     <Swipeable renderRightActions={renderRightActions}>
       <TouchableHighlight onPress={onPress} underlayColor={colors.light}>
         <View style={styles.container}>
-          <Image style={styles.image} source={image} />
-          <View>
+          {Icon && Icon}
+          {image && <Image style={styles.image} source={image} />}
+          <View style={styles.detailsContainer}>
             <AppText style={styles.title}>{title}</AppText>
-            <AppText style={styles.description}>{description}</AppText>
+            {description && (
+              <AppText style={styles.description}>{description}</AppText>
+            )}
           </View>
         </View>
       </TouchableHighlight>
@@ -44,13 +49,16 @@ const styles = StyleSheet.create({
     width: 70,
     height: 70,
     borderRadius: 35,
-    marginRight: 10,
   },
-  description: {
-    color: colors.medium,
+  detailsContainer: {
+    marginLeft: 10,
+    justifyContent: 'center',
   },
   title: {
     fontWeight: '500',
+  },
+  description: {
+    color: colors.medium,
   },
 });
 
