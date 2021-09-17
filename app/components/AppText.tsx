@@ -5,7 +5,7 @@ import defaultStyles from '../config/styles';
 
 interface AppTextProps extends TextProps {
   children: React.ReactNode;
-  style: TextStyle;
+  style?: TextStyle;
 }
 
 const AppText = ({ children, style, ...rest }: AppTextProps) => {
