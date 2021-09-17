@@ -1,3 +1,4 @@
+import { Formik } from 'formik';
 import React from 'react';
 import { Image, StyleSheet } from 'react-native';
 
@@ -9,23 +10,34 @@ const LoginScreen = () => {
   return (
     <Screen style={styles.container}>
       <Image source={require('../assets/logo-red.png')} style={styles.logo} />
-      <AppTextInput
-        iconName='email'
-        autoCapitalize='none'
-        autoCorrect={false}
-        placeholder='Email'
-        textContentType='emailAddress'
-        keyboardType='email-address'
-      />
-      <AppTextInput
-        iconName='lock'
-        autoCapitalize='none'
-        autoCorrect={false}
-        placeholder='Password'
-        textContentType='password'
-        secureTextEntry
-      />
-      <AppButton title='Login' onPress={() => {}} />
+      <Formik
+        initialValues={{ email: '', password: '' }}
+        onSubmit={(values) => console.log(values)}
+      >
+        {({ handleChange, handleSubmit }) => (
+          <>
+            <AppTextInput
+              iconName='email'
+              onChangeText={handleChange('email')}
+              autoCapitalize='none'
+              autoCorrect={false}
+              placeholder='Email'
+              textContentType='emailAddress'
+              keyboardType='email-address'
+            />
+            <AppTextInput
+              iconName='lock'
+              onChangeText={handleChange('password')}
+              autoCapitalize='none'
+              autoCorrect={false}
+              placeholder='Password'
+              textContentType='password'
+              secureTextEntry
+            />
+            <AppButton title='Login' onPress={handleSubmit} />
+          </>
+        )}
+      </Formik>
     </Screen>
   );
 };
