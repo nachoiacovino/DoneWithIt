@@ -5,7 +5,7 @@ import colors, { ColorKeys } from '../config/colors';
 
 interface AppButtonProps {
   title: string;
-  onPress: () => null;
+  onPress: () => void;
   color?: ColorKeys;
 }
 
