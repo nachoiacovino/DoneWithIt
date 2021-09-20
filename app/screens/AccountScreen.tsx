@@ -1,3 +1,4 @@
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 
@@ -5,6 +6,7 @@ import Icon from '../components/Icon';
 import { ListItem, ListItemSeparator } from '../components/lists';
 import Screen from '../components/Screen';
 import colors from '../config/colors';
+import { AccountStackParamList } from '../navigation/AccountNavigator';
 
 const menuItems = [
   {
@@ -20,10 +22,16 @@ const menuItems = [
       name: 'email',
       backgroundColor: colors.secondary,
     },
+    targetScreen: 'Messages',
   },
 ];
 
-const AccountScreen = () => {
+type AccountScreenProps = NativeStackScreenProps<
+  AccountStackParamList,
+  'Account'
+>;
+
+const AccountScreen = ({ navigation: { navigate } }: AccountScreenProps) => {
   return (
     <Screen style={styles.screen}>
       <View style={styles.container}>
@@ -38,13 +46,13 @@ const AccountScreen = () => {
         <FlatList
           data={menuItems}
           keyExtractor={({ title }) => title}
-          renderItem={({ item: { title, icon } }) => (
+          renderItem={({ item: { title, icon, targetScreen } }) => (
             <ListItem
               title={title}
               Icon={
                 <Icon name={icon.name} backgroundColor={icon.backgroundColor} />
               }
-              onPress={() => {}}
+              onPress={() => navigate(targetScreen)}
             />
           )}
           ItemSeparatorComponent={ListItemSeparator}
