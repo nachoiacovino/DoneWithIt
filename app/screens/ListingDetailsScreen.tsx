@@ -23,8 +23,8 @@ const ListingDetailsScreen = ({ route }: ListingDetailsScreenProps) => {
         <Text style={styles.price}>{listing.price}</Text>
         <View style={styles.userContainer}>
           <ListItem
-            image={require('../assets/mosh.jpg')}
-            title='Mosh Hamedani'
+            image={require('../assets/nacho.jpg')}
+            title='Nacho Iacovino'
             description='5 Listings'
             onPress={() => {}}
           />
