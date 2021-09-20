@@ -5,7 +5,7 @@ import { StyleSheet, TextInput, TextInputProps, View } from 'react-native';
 import colors from '../config/colors';
 import defaultStyles from '../config/styles';
 
-interface AppTextInputProps extends TextInputProps {
+export interface AppTextInputProps extends TextInputProps {
   iconName?: React.ComponentProps<typeof MaterialCommunityIcons>['name'];
 }
 
