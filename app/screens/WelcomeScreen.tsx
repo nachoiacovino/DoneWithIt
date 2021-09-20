@@ -1,9 +1,14 @@
+import { NavigationProp, ParamListBase } from '@react-navigation/native';
 import React from 'react';
 import { Image, ImageBackground, StyleSheet, Text, View } from 'react-native';
 
 import Button from '../components/Button';
 
-function WelcomeScreen() {
+interface WelcomeScreenProps {
+  navigation: NavigationProp<ParamListBase>;
+}
+
+const WelcomeScreen = ({ navigation: { navigate } }: WelcomeScreenProps) => {
   return (
     <ImageBackground
       blurRadius={10}
@@ -15,12 +20,16 @@ function WelcomeScreen() {
         <Text style={styles.tagline}>Sell What You Don't Need</Text>
       </View>
       <View style={styles.buttonsContainer}>
-        <Button title='Login' onPress={() => null} />
-        <Button title='Register' onPress={() => null} color='secondary' />
+        <Button title='Login' onPress={() => navigate('Login')} />
+        <Button
+          title='Register'
+          onPress={() => navigate('Register')}
+          color='secondary'
+        />
       </View>
     </ImageBackground>
   );
-}
+};
 
 const styles = StyleSheet.create({
   background: {
