@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, ImageSourcePropType, StyleSheet, View } from 'react-native';
+import { Image, ImageSourcePropType, StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
 
 import colors from '../config/colors';
 import Text from './Text';
@@ -8,17 +8,20 @@ interface CardProps {
   title: string;
   description: string;
   image: ImageSourcePropType;
+  onPress: () => void;
 }
 
-const Card = ({ title, description, image }: CardProps) => {
+const Card = ({ title, description, image, onPress }: CardProps) => {
   return (
-    <View style={styles.card}>
-      <Image style={styles.image} source={image} />
-      <View style={styles.detailsContainer}>
-        <Text style={styles.title}>{title}</Text>
-        <Text style={styles.description}>{description}</Text>
+    <TouchableWithoutFeedback onPress={onPress}>
+      <View style={styles.card}>
+        <Image style={styles.image} source={image} />
+        <View style={styles.detailsContainer}>
+          <Text style={styles.title}>{title}</Text>
+          <Text style={styles.description}>{description}</Text>
+        </View>
       </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 };
 

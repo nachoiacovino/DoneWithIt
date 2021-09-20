@@ -1,12 +1,11 @@
-import { NavigationProp, ParamListBase } from '@react-navigation/native';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React from 'react';
 import { Image, ImageBackground, StyleSheet, Text, View } from 'react-native';
 
 import Button from '../components/Button';
+import { AuthStackParamList } from '../navigation/AuthNavigator';
 
-interface WelcomeScreenProps {
-  navigation: NavigationProp<ParamListBase>;
-}
+type WelcomeScreenProps = NativeStackScreenProps<AuthStackParamList, 'Welcome'>;
 
 const WelcomeScreen = ({ navigation: { navigate } }: WelcomeScreenProps) => {
   return (
