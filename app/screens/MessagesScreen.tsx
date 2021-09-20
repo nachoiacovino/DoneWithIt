@@ -7,15 +7,16 @@ import Screen from '../components/Screen';
 const initialMessages = [
   {
     id: 1,
-    title: 'T1',
-    description: 'D1',
-    image: require('../assets/mosh.jpg'),
+    title: 'Nacho Iacovino',
+    description: 'Hey! Is this item still available?',
+    image: require('../assets/nacho.jpg'),
   },
   {
     id: 2,
-    title: 'T2',
-    description: 'D2',
-    image: require('../assets/mosh.jpg'),
+    title: 'Nacho Iacovino',
+    description:
+      "I'm interested in this item. When will you be able to post it?",
+    image: require('../assets/nacho.jpg'),
   },
 ];
 
