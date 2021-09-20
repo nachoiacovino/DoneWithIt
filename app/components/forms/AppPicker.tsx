@@ -2,7 +2,7 @@ import { Picker, PickerProps } from '@react-native-picker/picker';
 import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import colors from '../config/colors';
+import colors from '../../config/colors';
 
 const categories = [
   { label: 'Furniture', value: 1 },
@@ -18,6 +18,7 @@ const AppPicker = ({ ...rest }: AppPickerProps): JSX.Element => {
     <>
       <View style={styles.container}>
         <Picker
+          {...rest}
           selectedValue={selectedItem}
           onValueChange={(itemValue) => setSelectedItem(itemValue)}
         >
