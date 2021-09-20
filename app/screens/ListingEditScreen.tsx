@@ -1,4 +1,5 @@
-import React from 'react';
+import * as Location from 'expo-location';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import * as yup from 'yup';
 
@@ -78,39 +79,59 @@ const categories: Category[] = [
   },
 ];
 
-const ListingEditScreen = () => (
-  <Screen style={styles.container}>
-    <Form
-      initialValues={{
-        title: '',
-        price: '',
-        description: '',
-        category: null,
-        images: [],
-      }}
-      onSubmit={(values) => console.log(values)}
-      validationSchema={validationSchema}
-    >
-      <FormImagePicker name='images' />
-      <FormField maxLength={255} name='title' placeholder='Title' />
-      <FormField
-        keyboardType='numeric'
-        maxLength={8}
-        name='price'
-        placeholder='Price'
-      />
-      <FormPicker items={categories} name='category' prompt='Categories' />
-      <FormField
-        maxLength={255}
-        multiline
-        name='description'
-        numberOfLines={3}
-        placeholder='Description'
-      />
-      <SubmitButton title='Post' />
-    </Form>
-  </Screen>
-);
+const ListingEditScreen = () => {
+  const [location, setLocation] =
+    useState<{ latitude: number; longitude: number }>();
+
+  useEffect(() => {
+    const getLocation = async () => {
+      const { granted } = await Location.requestForegroundPermissionsAsync();
+      if (!granted) return;
+
+      const {
+        coords: { latitude, longitude },
+      } = await Location.getLastKnownPositionAsync();
+
+      setLocation({ latitude, longitude });
+      console.log(location);
+    };
+    getLocation();
+  }, []);
+
+  return (
+    <Screen style={styles.container}>
+      <Form
+        initialValues={{
+          title: '',
+          price: '',
+          description: '',
+          category: null,
+          images: [],
+        }}
+        onSubmit={(values) => console.log(values)}
+        validationSchema={validationSchema}
+      >
+        <FormImagePicker name='images' />
+        <FormField maxLength={255} name='title' placeholder='Title' />
+        <FormField
+          keyboardType='numeric'
+          maxLength={8}
+          name='price'
+          placeholder='Price'
+        />
+        <FormPicker items={categories} name='category' prompt='Categories' />
+        <FormField
+          maxLength={255}
+          multiline
+          name='description'
+          numberOfLines={3}
+          placeholder='Description'
+        />
+        <SubmitButton title='Post' />
+      </Form>
+    </Screen>
+  );
+};
 
 export default ListingEditScreen;
 
