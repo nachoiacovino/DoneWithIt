@@ -1,8 +1,8 @@
 import { useFormikContext } from 'formik';
 import React from 'react';
 
-import { ErrorMessage } from '.';
 import AppPicker, { AppPickerProps } from '../AppPicker';
+import ErrorMessage from './ErrorMessage';
 
 interface AppFormPickerProps extends AppPickerProps {
   name: string;
