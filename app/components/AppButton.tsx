@@ -3,9 +3,9 @@ import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 import colors, { ColorKeys } from '../config/colors';
 
-interface AppButtonProps {
+export interface AppButtonProps {
   title: string;
-  onPress: () => void;
+  onPress?: () => void;
   color?: ColorKeys;
 }
 
