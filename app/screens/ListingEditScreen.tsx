@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 import * as yup from 'yup';
 
 import { Form, FormField, FormPicker, SubmitButton } from '../components/forms';
+import FormImagePicker from '../components/forms/FormImagePicker';
 import Screen from '../components/Screen';
 
 const validationSchema = yup.object().shape({
@@ -10,12 +11,71 @@ const validationSchema = yup.object().shape({
   price: yup.number().required().min(1).max(10000).label('Price'),
   description: yup.string().label('Description'),
   category: yup.object().required().nullable().label('Category'),
+  images: yup.array().min(1, 'Please select at least one image'),
 });
 
-const items = [
-  { label: 'Furniture', value: 1 },
-  { label: 'Clothing', value: 2 },
-  { label: 'Camera', value: 3 },
+export interface Category {
+  backgroundColor: string;
+  icon: string;
+  label: string;
+  value: number;
+}
+
+const categories: Category[] = [
+  {
+    backgroundColor: '#fc5c65',
+    icon: 'floor-lamp',
+    label: 'Furniture',
+    value: 1,
+  },
+  {
+    backgroundColor: '#fd9644',
+    icon: 'car',
+    label: 'Cars',
+    value: 2,
+  },
+  {
+    backgroundColor: '#fed330',
+    icon: 'camera',
+    label: 'Cameras',
+    value: 3,
+  },
+  {
+    backgroundColor: '#26de81',
+    icon: 'cards',
+    label: 'Games',
+    value: 4,
+  },
+  {
+    backgroundColor: '#2bcbba',
+    icon: 'shoe-heel',
+    label: 'Clothing',
+    value: 5,
+  },
+  {
+    backgroundColor: '#45aaf2',
+    icon: 'basketball',
+    label: 'Sports',
+    value: 6,
+  },
+  {
+    backgroundColor: '#4b7bec',
+    icon: 'headphones',
+    label: 'Movies & Music',
+    value: 7,
+  },
+  {
+    backgroundColor: '#a55eea',
+    icon: 'book-open-variant',
+    label: 'Books',
+    value: 8,
+  },
+  {
+    backgroundColor: '#778ca3',
+    icon: 'application',
+    label: 'Other',
+    value: 9,
+  },
 ];
 
 const ListingEditScreen = () => (
@@ -26,10 +86,12 @@ const ListingEditScreen = () => (
         price: '',
         description: '',
         category: null,
+        images: [],
       }}
       onSubmit={(values) => console.log(values)}
       validationSchema={validationSchema}
     >
+      <FormImagePicker name='images' />
       <FormField maxLength={255} name='title' placeholder='Title' />
       <FormField
         keyboardType='numeric'
@@ -37,7 +99,7 @@ const ListingEditScreen = () => (
         name='price'
         placeholder='Price'
       />
-      <FormPicker items={items} name='category' prompt='Category' />
+      <FormPicker items={categories} name='category' prompt='Categories' />
       <FormField
         maxLength={255}
         multiline

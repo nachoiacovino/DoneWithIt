@@ -1,11 +1,13 @@
 import { useFormikContext } from 'formik';
 import React from 'react';
 
+import { Category } from '../../screens/ListingEditScreen';
 import Picker, { AppPickerProps } from '../Picker';
 import ErrorMessage from './ErrorMessage';
 
 interface AppFormPickerProps extends AppPickerProps {
   name: string;
+  items: Category[];
 }
 
 const AppFormPicker = ({ items, name, prompt }: AppFormPickerProps) => {

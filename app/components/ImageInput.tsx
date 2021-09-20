@@ -23,11 +23,12 @@ const ImageInput = ({ uri, onChangeImage }: ImageInputProps) => {
 
   const handlePress = () => {
     if (!uri) selectImage();
-    else
+    else {
       Alert.alert('Delete', 'Are you sure you want to delete this image?', [
         { text: 'Yes', onPress: () => onChangeImage('') },
         { text: 'No' },
       ]);
+    }
   };
 
   const selectImage = async () => {
