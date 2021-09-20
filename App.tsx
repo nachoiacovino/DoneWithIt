@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 
+import ImageInput from './app/components/ImageInput';
 import Screen from './app/components/Screen';
-import MessagesScreen from './app/screens/MessagesScreen';
 
 export default function App() {
+  const [imageUri, setImageUri] = useState('');
   return (
     <Screen>
-      <MessagesScreen />
+      <ImageInput uri={imageUri} onChangeImage={(uri) => setImageUri(uri)} />
     </Screen>
   );
 }
