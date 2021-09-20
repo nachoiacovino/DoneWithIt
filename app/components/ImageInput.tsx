@@ -6,7 +6,7 @@ import { Alert, Image, StyleSheet, TouchableWithoutFeedback, View } from 'react-
 import colors from '../config/colors';
 
 interface ImageInputProps {
-  uri: string;
+  uri?: string;
   onChangeImage: (uri: string) => void;
 }
 
