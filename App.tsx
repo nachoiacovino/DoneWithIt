@@ -1,12 +1,12 @@
 import React from 'react';
 
 import Screen from './app/components/Screen';
-import RegisterScreen from './app/screens/RegisterScreen';
+import MessagesScreen from './app/screens/MessagesScreen';
 
 export default function App() {
   return (
     <Screen>
-      <RegisterScreen />
+      <MessagesScreen />
     </Screen>
   );
 }
