@@ -4,7 +4,7 @@ import { Image, ImageSourcePropType, StyleSheet, TouchableHighlight, View } from
 import { Swipeable } from 'react-native-gesture-handler';
 
 import colors from '../../config/colors';
-import AppText from '../AppText';
+import Text from '../Text';
 
 interface ListItemProps {
   title: string;
@@ -30,9 +30,9 @@ const ListItem = ({
           {Icon && Icon}
           {image && <Image style={styles.image} source={image} />}
           <View style={styles.detailsContainer}>
-            <AppText style={styles.title}>{title}</AppText>
+            <Text style={styles.title}>{title}</Text>
             {description && (
-              <AppText style={styles.description}>{description}</AppText>
+              <Text style={styles.description}>{description}</Text>
             )}
           </View>
           <MaterialCommunityIcons

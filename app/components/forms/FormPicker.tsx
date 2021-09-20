@@ -1,7 +1,7 @@
 import { useFormikContext } from 'formik';
 import React from 'react';
 
-import AppPicker, { AppPickerProps } from '../AppPicker';
+import Picker, { AppPickerProps } from '../Picker';
 import ErrorMessage from './ErrorMessage';
 
 interface AppFormPickerProps extends AppPickerProps {
@@ -13,7 +13,7 @@ const AppFormPicker = ({ items, name, prompt }: AppFormPickerProps) => {
 
   return (
     <>
-      <AppPicker
+      <Picker
         items={items}
         onValueChange={(item) => setFieldValue(name, item)}
         selectedValue={values[name]}

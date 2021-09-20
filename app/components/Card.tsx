@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, ImageSourcePropType, StyleSheet, View } from 'react-native';
 
 import colors from '../config/colors';
-import AppText from './AppText';
+import Text from './Text';
 
 interface CardProps {
   title: string;
@@ -15,8 +15,8 @@ const Card = ({ title, description, image }: CardProps) => {
     <View style={styles.card}>
       <Image style={styles.image} source={image} />
       <View style={styles.detailsContainer}>
-        <AppText style={styles.title}>{title}</AppText>
-        <AppText style={styles.description}>{description}</AppText>
+        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.description}>{description}</Text>
       </View>
     </View>
   );

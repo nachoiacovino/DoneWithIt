@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 
 import colors from '../../config/colors';
-import AppText from '../AppText';
+import Text from '../Text';
 
 interface ErrorMessageProps {
   error: string | undefined;
@@ -10,9 +10,7 @@ interface ErrorMessageProps {
 }
 
 const ErrorMessage = ({ error, touched }: ErrorMessageProps) => {
-  return error && touched ? (
-    <AppText style={styles.error}>{error}</AppText>
-  ) : null;
+  return error && touched ? <Text style={styles.error}>{error}</Text> : null;
 };
 
 export default ErrorMessage;

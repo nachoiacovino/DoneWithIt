@@ -1,7 +1,7 @@
 import { useFormikContext } from 'formik';
 import React from 'react';
 
-import AppTextInput, { AppTextInputProps } from '../AppTextInput';
+import TextInput, { AppTextInputProps } from '../TextInput';
 import ErrorMessage from './ErrorMessage';
 
 interface AppFormFieldProps extends AppTextInputProps {
@@ -13,7 +13,7 @@ const AppFormField = ({ name, ...rest }: AppFormFieldProps) => {
 
   return (
     <>
-      <AppTextInput onChangeText={handleChange(name)} {...rest} />
+      <TextInput onChangeText={handleChange(name)} {...rest} />
       <ErrorMessage error={errors[name]} touched={touched[name]} />
     </>
   );
