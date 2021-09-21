@@ -1,11 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { ButtonProps, StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 import colors, { ColorKeys } from '../config/colors';
 
-export interface AppButtonProps {
+export interface AppButtonProps extends ButtonProps {
   title: string;
-  onPress?: () => void;
   color?: ColorKeys;
 }
 

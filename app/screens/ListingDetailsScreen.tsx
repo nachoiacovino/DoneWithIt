@@ -5,6 +5,7 @@ import { Image, StyleSheet, View } from 'react-native';
 import { ListItem } from '../components/lists';
 import Text from '../components/Text';
 import colors from '../config/colors';
+import { Listing } from '../hooks/useListings';
 import { FeedStackParamList } from '../navigation/FeedNavigator';
 
 type ListingDetailsScreenProps = NativeStackScreenProps<
@@ -13,14 +14,14 @@ type ListingDetailsScreenProps = NativeStackScreenProps<
 >;
 
 const ListingDetailsScreen = ({ route }: ListingDetailsScreenProps) => {
-  const listing = route.params;
+  const listing: Listing = route.params;
 
   return (
     <View>
-      <Image style={styles.image} source={listing.image} />
+      <Image style={styles.image} source={{ uri: listing.images[0].url }} />
       <View style={styles.detailsContainer}>
         <Text style={styles.title}>{listing.title}</Text>
-        <Text style={styles.price}>{listing.price}</Text>
+        <Text style={styles.price}>${listing.price}</Text>
         <View style={styles.userContainer}>
           <ListItem
             image={require('../assets/nacho.jpg')}

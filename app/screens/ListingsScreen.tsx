@@ -2,32 +2,13 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 
+import Button from '../components/Button';
 import Card from '../components/Card';
 import Screen from '../components/Screen';
+import Text from '../components/Text';
 import colors from '../config/colors';
+import useListings, { Listing } from '../hooks/useListings';
 import { FeedStackParamList } from '../navigation/FeedNavigator';
-
-export interface Listing {
-  id: number;
-  title: string;
-  price: number;
-  image: any;
-}
-
-const listings: Listing[] = [
-  {
-    id: 1,
-    title: 'Red jacket for sale',
-    price: 100,
-    image: require('../assets/jacket.jpg'),
-  },
-  {
-    id: 2,
-    title: 'Couch in great condition',
-    price: 1000,
-    image: require('../assets/couch.jpg'),
-  },
-];
 
 type ListingsScreenProps = NativeStackScreenProps<
   FeedStackParamList,
@@ -35,16 +16,24 @@ type ListingsScreenProps = NativeStackScreenProps<
 >;
 
 const ListingsScreen = ({ navigation: { navigate } }: ListingsScreenProps) => {
+  const [listings, error, retry] = useListings();
+
   return (
     <Screen style={styles.screen}>
+      {error && (
+        <>
+          <Text>Couldn't retrieve the listings.</Text>
+          <Button onPress={retry} title='Retry' />
+        </>
+      )}
       <FlatList
         data={listings}
-        keyExtractor={({ id }) => id.toString()}
-        renderItem={({ item }) => (
+        keyExtractor={({ id }) => id + ''}
+        renderItem={({ item }: { item: Listing }) => (
           <Card
             title={item.title}
             description={'$' + item.price}
-            image={item.image}
+            imageUrl={item.images[0].url}
             onPress={() => navigate('ListingDetails', item)}
           />
         )}
