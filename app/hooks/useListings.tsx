@@ -18,7 +18,7 @@ export interface Listing {
   };
 }
 
-const useListings = () => {
+const useListings = (): [Listing[], boolean, () => void] => {
   const [listings, setListings] = useState<Listing[]>([]);
   const [error, setError] = useState(false);
 
