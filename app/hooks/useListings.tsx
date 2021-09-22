@@ -1,22 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import listingsApi from '../api/listings';
-
-export interface Listing {
-  id: number;
-  title: string;
-  images: {
-    url: string;
-    thumbnailUrl: string;
-  }[];
-  price: number;
-  categoryId: number;
-  userId: number;
-  location: {
-    latitude: number;
-    longitude: number;
-  };
-}
+import Listing from '../interfaces/listing';
 
 const useListings = (): [Listing[], boolean, boolean, () => void] => {
   const [listings, setListings] = useState<Listing[]>([]);

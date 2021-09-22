@@ -8,7 +8,7 @@ export default interface Listing {
   price: number;
   categoryId: number;
   userId: number;
-  location: {
+  location?: {
     latitude: number;
     longitude: number;
   };
