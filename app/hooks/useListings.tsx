@@ -18,12 +18,15 @@ export interface Listing {
   };
 }
 
-const useListings = (): [Listing[], boolean, () => void] => {
+const useListings = (): [Listing[], boolean, boolean, () => void] => {
   const [listings, setListings] = useState<Listing[]>([]);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
   const fetchData = async () => {
+    setLoading(true);
     const res = await listingsApi.getListings();
+    setLoading(false);
     if (!res.ok) return setError(true);
 
     setError(false);
@@ -34,7 +37,7 @@ const useListings = (): [Listing[], boolean, () => void] => {
     fetchData();
   }, []);
 
-  return [listings, error, fetchData];
+  return [listings, loading, error, fetchData];
 };
 
 export default useListings;
