@@ -1,7 +1,8 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React from 'react';
-import { ActivityIndicator, FlatList, StyleSheet } from 'react-native';
+import { FlatList, StyleSheet } from 'react-native';
 
+import ActivityIndicator from '../components/ActivityIndicator';
 import Button from '../components/Button';
 import Card from '../components/Card';
 import Screen from '../components/Screen';
@@ -26,7 +27,7 @@ const ListingsScreen = ({ navigation: { navigate } }: ListingsScreenProps) => {
           <Button onPress={retry} title='Retry' />
         </>
       )}
-      <ActivityIndicator animating={loading} size='large' />
+      <ActivityIndicator animating={loading} />
       <FlatList
         data={listings}
         keyExtractor={({ id }) => id + ''}
