@@ -19,6 +19,9 @@
     "ios": {
       "supportsTablet": true
     },
-    "description": "A marketplace for selling the stuff you don't need anymore."
+    "description": "A marketplace for selling the stuff you don't need anymore.",
+    "android": {
+      "package": "com.beyondso.DoneWithIt"
+    }
   }
 }
