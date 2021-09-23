@@ -1,6 +1,7 @@
 export default interface Listing {
   id: number;
   title: string;
+  description: string;
   images: {
     url: string;
     thumbnailUrl: string;

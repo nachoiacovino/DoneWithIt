@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import * as yup from 'yup';
 
+import listingsApi from '../api/listings';
 import { Form, FormField, FormPicker, SubmitButton } from '../components/forms';
 import FormImagePicker from '../components/forms/FormImagePicker';
 import Screen from '../components/Screen';
 import useLocation from '../hooks/useLocation';
+import Listing from '../interfaces/listing';
+import UploadScreen from './UploadScreen';
 
 const validationSchema = yup.object().shape({
   title: yup.string().required().min(1).label('Title'),
@@ -81,18 +84,45 @@ const categories: Category[] = [
 
 const ListingEditScreen = () => {
   const location = useLocation();
+  const [uploadVisible, setUploadVisible] = useState(false);
+  const [progress, setProgress] = useState(0);
+
+  const handleSubmit = async (
+    listing: Listing,
+    { resetForm }: any,
+  ): Promise<void> => {
+    console.log('hi');
+    setProgress(0);
+    setUploadVisible(true);
+    const result = await listingsApi.addListing(
+      { ...listing, location },
+      (progress: number) => setProgress(progress),
+    );
+
+    if (!result.ok) {
+      setUploadVisible(false);
+      return alert('Could not save the listing');
+    }
+
+    resetForm();
+  };
 
   return (
     <Screen style={styles.container}>
+      <UploadScreen
+        onDone={() => setUploadVisible(false)}
+        progress={progress}
+        visible={uploadVisible}
+      />
       <Form
         initialValues={{
           title: '',
           price: '',
           description: '',
-          category: null,
+          categoryId: null,
           images: [],
         }}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
         <FormImagePicker name='images' />
@@ -103,7 +133,7 @@ const ListingEditScreen = () => {
           name='price'
           placeholder='Price'
         />
-        <FormPicker items={categories} name='category' prompt='Categories' />
+        <FormPicker items={categories} name='categoryId' prompt='Categories' />
         <FormField
           maxLength={255}
           multiline
